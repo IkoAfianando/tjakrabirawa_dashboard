@@ -14,6 +14,17 @@ export const authOptions = {
         }),
         // ...add more providers here
     ],
+    callbacks: {
+        async signIn(user, account, profile) {
+            // Add custom logic here for handling successful sign-in
+            return true
+        },
+        async redirect(url, baseUrl) {
+            // Add custom logic here for redirecting after sign-in
+            return baseUrl
+        },
+        // ...add more callback functions here
+    },
 }
 
 export default NextAuth(authOptions)
