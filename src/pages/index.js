@@ -4,9 +4,16 @@ import Header from '../components/Header'
 import TopCards from "@/components/TopCards";
 import BarChart from "@/components/BarChart";
 import RecentOrders from "@/components/RecentOrders";
-import Sidebar from "@/components/Sidebar";
+import {useSession} from "next-auth/react";
+import {useRouter} from "next/router";
+
 
 export default function Home() {
+    const {data: session} = useSession()
+    const router = useRouter()
+    if(session === null) {
+        router.push('/login')
+    }
     return (
         <>
             <Head>
